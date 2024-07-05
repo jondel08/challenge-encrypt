@@ -1,11 +1,11 @@
 function Encrypt(){
     const texValue = document.getElementById('txtEncripta').value.toString();
-    console.log(EncryptText(texValue));
+    document.getElementById('txtEncriptado').value = EncryptText(texValue);
 }
 
 function Decrypt(){
     const texValue = document.getElementById('txtEncripta').value.toString();
-    console.log(DecryptText(texValue));
+    document.getElementById('txtEncriptado').value = DecryptText(texValue);
 }
 
 function EncryptText(text){
@@ -91,4 +91,17 @@ function isValidText(value) {
     // Expresión regular para validar letras minúsculas sin acentos ni caracteres especiales
     var regex = /^[a-z\s]+$/;
     return regex.test(value);
+}
+
+function Clean(){
+    var textarea = document.getElementById('txtEncripta');
+    textarea.value = '';
+}
+
+
+function CopyTo(){
+
+    const texToCopy = document.getElementById('txtEncriptado').value.toString();
+    document.getElementById('txtEncripta').value = texToCopy;
+    document.getElementById('txtEncriptado').value = '';
 }
