@@ -94,8 +94,8 @@ function isValidText(value) {
 }
 
 function Clean(){
-    var textarea = document.getElementById('txtEncripta');
-    textarea.value = '';
+    document.getElementById('txtEncripta').value = '';
+    document.getElementById('txtEncriptado').value = '';
 }
 
 
