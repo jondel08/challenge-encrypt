@@ -1,14 +1,28 @@
-function Encrypt(){
-    const texValue = document.getElementById('txtEncripta').value.toString();
-    document.getElementById('txtEncriptado').value = EncryptText(texValue);
+document.getElementById("txtEncriptado").style.visibility = "hidden";
+
+function Encrypt() {
+    let textValue = document.getElementById('txtEncripta').value.toString();
+    document.getElementById('txtEncriptado').value = EncryptText(textValue);
+
+    if (textValue == null || textValue == '') {
+        ValidateElements(false);
+    } else {
+        ValidateElements(true);
+    }
 }
 
-function Decrypt(){
-    const texValue = document.getElementById('txtEncripta').value.toString();
-    document.getElementById('txtEncriptado').value = DecryptText(texValue);
+function Decrypt() {
+    const textValue = document.getElementById('txtEncripta').value.toString();
+    document.getElementById('txtEncriptado').value = DecryptText(textValue);
+
+    if (textValue == null || textValue == '') {
+        ValidateElements(false);
+    } else {
+        ValidateElements(true);
+    }
 }
 
-function EncryptText(text){
+function EncryptText(text) {
 
     var encryptingRules = {
         'e': 'enter',
@@ -32,7 +46,7 @@ function EncryptText(text){
     return encryptedText;
 }
 
-function DecryptText(encryptedText){
+function DecryptText(encryptedText) {
 
     var decryptingRules = {
         'enter': 'e',
@@ -45,7 +59,7 @@ function DecryptText(encryptedText){
     var decryptedWords = Object.keys(decryptingRules);
     var decryptedText = encryptedText;
 
-    decryptedWords.forEach(function(word) {
+    decryptedWords.forEach(function (word) {
         var regex = new RegExp(word, 'g');
         decryptedText = decryptedText.replace(regex, decryptingRules[word]);
     });
@@ -53,17 +67,16 @@ function DecryptText(encryptedText){
     return decryptedText;
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var textarea = document.getElementById('txtEncripta');
 
-    textarea.addEventListener('input', function() {
+    textarea.addEventListener('input', function () {
         var value = textarea.value;
         textarea.value = removeInvalidCharacters(value);
     });
 
     var validateButton = document.getElementById('presentacion__enlaces');
-    validateButton.addEventListener('click', function() {
+    validateButton.addEventListener('click', function () {
         validateTextarea();
     });
 });
@@ -93,15 +106,30 @@ function isValidText(value) {
     return regex.test(value);
 }
 
-function Clean(){
+function Clean() {
     document.getElementById('txtEncripta').value = '';
     document.getElementById('txtEncriptado').value = '';
+    ValidateElements(false);
 }
 
-
-function CopyTo(){
-
+function CopyTo() {
     const texToCopy = document.getElementById('txtEncriptado').value.toString();
-    document.getElementById('txtEncripta').value = texToCopy;
-    document.getElementById('txtEncriptado').value = '';
+
+    if (texToCopy == null || texToCopy == '') {
+        alert('No hay nada para copiar en este momento');
+    } else {
+        document.getElementById('txtEncripta').value = texToCopy;
+        document.getElementById('txtEncriptado').value = '';
+        ValidateElements(false);
+    }
+}
+
+function ValidateElements(value) {
+    if (value == true) {
+        document.getElementById('txtEncriptado').style.visibility = 'visible';
+        document.getElementById('imagenNoTexto').style.visibility = 'hidden';
+    } else {
+        document.getElementById("txtEncriptado").style.visibility = "hidden";
+        document.getElementById('imagenNoTexto').style.visibility = 'visible';
+    }
 }
