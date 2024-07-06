@@ -17,7 +17,8 @@
                 </strong>
             </h1>
             <div>
-                <textarea class="presentacion__contenido__textarea" id="txtEncripta" placeholder="Escribe aquí"></textarea>
+                <textarea class="presentacion__contenido__textarea" id="txtEncripta"
+                    placeholder="Escribe aquí"></textarea>
                 <p class="error-message" id="error-message">El texto no puede ser nulo, y solo puede contener minúsculas
                     sin acentos ni caracteres especiales.</p>
             </div>
@@ -32,12 +33,11 @@
                 </a>
 
         </section>
-        <div>
-
-        </div>
-        <div class="presentacion__imagen__container">
-            <img class="presentacion__imagen" id="imagenNoTexto" src="assets/Imagem.png" alt="noMessage">
-            <textarea class="presentacion__imagen__textarea" id="txtEncriptado" readonly="true"></textarea>
+        <div class="presentacion__imagen">
+            <div>
+                <img class="presentacion__imagen_img" id="imagenNoTexto" src="assets/imagen.png" alt="noMessage">
+                <textarea class="presentacion__imagen__textarea" id="txtEncriptado" readonly="true"></textarea>
+            </div>
             <div class="presentacion__imagen__tools">
                 <a class="presentacion__enlaces__copy" onclick="CopyTo()">
                     <img class="btn__encript" src="assets/copy_blue.png">
@@ -50,10 +50,13 @@
             </div>
         </div>
     </main>
+
     <footer class="footer">
         <p>Desarrollado por Joam Delgado</p>
     </footer>
+
     <script src="app.js"></script>
+
 </body>
 
 </html>

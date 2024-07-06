@@ -1,4 +1,4 @@
-document.getElementById("txtEncriptado").style.visibility = "hidden";
+document.getElementById("txtEncriptado").style.display = "none";
 
 function Encrypt() {
     let textValue = document.getElementById('txtEncripta').value.toString();
@@ -107,9 +107,17 @@ function isValidText(value) {
 }
 
 function Clean() {
-    document.getElementById('txtEncripta').value = '';
-    document.getElementById('txtEncriptado').value = '';
-    ValidateElements(false);
+
+    let txt1 = document.getElementById('txtEncripta').value;
+    let txt2 = document.getElementById('txtEncriptado').value;
+
+    if (txt1 == '' && txt2 == '') {
+        alert('Nada que limpiar por el momento')
+    } else {
+        document.getElementById('txtEncripta').value = '';
+        document.getElementById('txtEncriptado').value = '';
+        ValidateElements(false);
+    }
 }
 
 function CopyTo() {
@@ -126,10 +134,10 @@ function CopyTo() {
 
 function ValidateElements(value) {
     if (value == true) {
-        document.getElementById('txtEncriptado').style.visibility = 'visible';
-        document.getElementById('imagenNoTexto').style.visibility = 'hidden';
+        document.getElementById('txtEncriptado').style.display = 'block';
+        document.getElementById('imagenNoTexto').style.display = 'none';
     } else {
-        document.getElementById("txtEncriptado").style.visibility = "hidden";
-        document.getElementById('imagenNoTexto').style.visibility = 'visible';
+        document.getElementById("txtEncriptado").style.display = "none";
+        document.getElementById('imagenNoTexto').style.display = 'block';
     }
 }
